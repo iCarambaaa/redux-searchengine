@@ -10,7 +10,12 @@ const mapStateToProps = (state) => ({
 // console.log(HTMLBody);
 // console.log({ selectedJob });
 const SingleJobOffer = ({ selectedJob }) => {
-  return <Markup content={selectedJob.description} />;
+  return (
+    <>
+      <h2>{selectedJob.title}</h2>
+      <Markup content={selectedJob.description} />
+    </>
+  );
 };
 
 export default connect(mapStateToProps)(SingleJobOffer);

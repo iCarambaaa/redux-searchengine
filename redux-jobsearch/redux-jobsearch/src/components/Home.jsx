@@ -6,6 +6,7 @@ const Home = () => {
   return (
     <Container fluid>
       <Searchbar />
+      <hr />
       <JobList />
     </Container>
   );

@@ -18,7 +18,6 @@ function App() {
           </Col>
           {/* <Home /> */}
         </Row>
-        <hr />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/:companyName' element={<SingleJobOffer />} />
