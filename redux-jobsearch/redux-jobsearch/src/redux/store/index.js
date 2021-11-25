@@ -1,18 +1,39 @@
-import { createStore } from "redux";
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import mainReducer from '../reducer'
+// import favoritesReducer from '../reducer/favorites'
+import selectedJobReducer from '../reducer/selectedJob'
+import thunk from 'redux-thunk'                                         // redux-thunk is going to be helpful for handling async operations in the redux flow
+
+
+// we'll have two situations: the end user may have the redux devTools or not
+// if the devTools are installed in the user's browser, we'll have to use the compose function
+// coming from them; if the devTools are not installed, we're going to use the compose function
+// out of the redux library
+
+const aComposeFunctionThatAlwaysWorks = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export const initialState = {
 
     favorites: [],
     selectedJob: {},
-    jobList: []
+    jobList: {
+        jobList: []
+    }
 
 }
 
-const configureStore = createStore(
-    mainReducer,
+const reducerGrande = combineReducers({                     // combine reducers here
+   // favorites: favoritesReducer,
+   selectedJob: selectedJobReducer,
+   jobList: mainReducer
+   
+})
+
+
+const configureStore = createStore(                         // need to import this in index.js    <Provider store={configureStore}>   
+    reducerGrande,
     initialState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    aComposeFunctionThatAlwaysWorks(applyMiddleware(thunk)) // composing two middlewares (DEV & thug) thug needs to be wrapped in applyMiddleware()
 )
 
 export default configureStore

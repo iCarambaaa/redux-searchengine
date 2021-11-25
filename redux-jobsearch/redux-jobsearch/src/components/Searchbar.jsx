@@ -1,17 +1,20 @@
 import { Form, Container } from "react-bootstrap";
 import { useState } from "react";
 import { connect } from "react-redux";
-import { saveFetchedJobsAction } from "../redux/actions";
+import { getJobsAction } from "../redux/actions";
 
 const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
-  saveFetchedJobs: (data) => {
-    dispatch(saveFetchedJobsAction(data));
+  // saveFetchedJobs: (data) => {
+  //   dispatch(saveFetchedJobsAction(data));
+  // },
+  getJobs: (baseEndpoint, query) => {
+    dispatch(getJobsAction(baseEndpoint, query));
   },
 });
 
-const Searchbar = ({ saveFetchedJobs }) => {
+const Searchbar = ({ getJobs }) => {
   const baseEndpoint = "https://strive-jobs-api.herokuapp.com/jobs?search=";
 
   const [query, setQuery] = useState("");
@@ -19,17 +22,16 @@ const Searchbar = ({ saveFetchedJobs }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(baseEndpoint + query + "&limit=15");
-
-    if (!response.ok) {
-      alert("Error fetching results");
-      return;
-    }
-
-    const { data } = await response.json();
-
-    saveFetchedJobs(data);
+    // const response = await fetch(baseEndpoint + query + "&limit=15");
+    // if (!response.ok) {
+    //   alert("Error fetching results");
+    //   return;
+    // }
+    // const { data } = await response.json();
+    // saveFetchedJobs(data);
     // console.log(data);
+
+    getJobs(baseEndpoint, query);
   };
 
   return (

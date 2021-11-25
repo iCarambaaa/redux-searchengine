@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { setSelectedJobAction } from "../redux/actions";
 
 const mapStateToProps = (state) => ({
-  jobList: state.jobList,
+  jobList: state.jobList.jobList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-// console.log("here console: ", jobList);
+// console.log("here console: ", jobList); ???
 
 const JobList = ({ jobList, setSelectedJob }) => {
   return (
