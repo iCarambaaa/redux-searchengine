@@ -24,6 +24,7 @@ export const setSelectedJobAction = (e) => ({
 // is going to be given by redux-thunk a DISPATCH function as the first argument
 
 export const getJobsAction = (baseEndpoint, query) => {
+    console.log("fetch started " ,new Date())
     return async (dispatch) => {
     try {
         const response = await fetch(baseEndpoint + query + "&limit=15")
@@ -36,14 +37,19 @@ export const getJobsAction = (baseEndpoint, query) => {
              dispatch({
                 type: SAVE_TO_JOBLIST,
                 payload: data})
-                
+              
         } else {
         alert("Error fetching results");
         return;
         }
     } catch (error) {
         alert("Error fetching results", error);
-    }}
+    }
+    finally {
+        console.log("fetch ended " ,new Date())
+    }
+}
+   
 }
 
 

@@ -51,7 +51,7 @@ const JobList = ({
             >
               {job.company_name}
             </Link>
-            {job.title}{" "}
+            , {job.title}{" "}
             {isFav ? (
               <StarFill
                 color="gold"

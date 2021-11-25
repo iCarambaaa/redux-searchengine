@@ -4,6 +4,7 @@ import "./App.css";
 import { Col, Container, Row } from "react-bootstrap";
 import Home from "./components/Home";
 import SingleJobOffer from "./components/SingleJobOffer";
+import Favourites from "./components/Favourites";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         </Row>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/favourites' element={<Favourites />} />
           <Route path='/:companyName' element={<SingleJobOffer />} />
           <Route path='*' element={<h1>404 - Not Found</h1>} />
         </Routes>
