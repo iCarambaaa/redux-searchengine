@@ -10,11 +10,7 @@ const mainReducer = (state = initialState, action) => {
             case SAVE_TO_JOBLIST:
                 return {...state,
                     jobList: action.payload}
-            // case SET_SELECTED_JOB:
-            //     return {
-            //         ...state,
-            //         selectedJob: action.payload
-                // }
+
             default: 
                 return state
     }

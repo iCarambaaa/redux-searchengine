@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import mainReducer from '../reducer'
-// import favoritesReducer from '../reducer/favorites'
+import favouritesReducer from '../reducer/favourites'
 import selectedJobReducer from '../reducer/selectedJob'
 import thunk from 'redux-thunk'                                         // redux-thunk is going to be helpful for handling async operations in the redux flow
 
@@ -14,7 +14,7 @@ const aComposeFunctionThatAlwaysWorks = window.__REDUX_DEVTOOLS_EXTENSION_COMPOS
 
 export const initialState = {
 
-    favorites: [],
+    favourites: [],
     selectedJob: {},
     jobList: {
         jobList: []
@@ -23,9 +23,9 @@ export const initialState = {
 }
 
 const reducerGrande = combineReducers({                     // combine reducers here
-   // favorites: favoritesReducer,
-   selectedJob: selectedJobReducer,
-   jobList: mainReducer
+    favourites: favouritesReducer,
+    selectedJob: selectedJobReducer,
+    jobList: mainReducer
    
 })
 

@@ -1,6 +1,8 @@
 export const SAVE_TO_JOBLIST ='SAVE_TO_JOBLIST'
 export const SET_SELECTED_JOB ='SET_SELECTED_JOB'
 export const GET_JOBS ='GET_JOBS'
+export const ADD_TO_FAVOIRITES ='TOGGLE_FAVOIRITE'
+export const REMOVE_FROM_FAVOURITES ='REMOVE_FROM_FAVOURITES'
 
 // export const saveFetchedJobsAction = (fetchedData) => ({
 //     type: SAVE_TO_JOBLIST,
@@ -43,3 +45,14 @@ export const getJobsAction = (baseEndpoint, query) => {
         alert("Error fetching results", error);
     }}
 }
+
+
+export const addToFavouritesAction = (data) => ({
+    type: ADD_TO_FAVOIRITES,
+    payload: data
+})
+
+export const removeFromFavouritesAction = (data) => ({
+    type: REMOVE_FROM_FAVOURITES,
+    payload: data
+})
