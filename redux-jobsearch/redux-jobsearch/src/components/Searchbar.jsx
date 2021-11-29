@@ -1,23 +1,14 @@
 import { Form, Container } from "react-bootstrap";
 import { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getJobsAction } from "../redux/actions";
 
-const mapStateToProps = (state) => ({});
-
-const mapDispatchToProps = (dispatch) => ({
-  // saveFetchedJobs: (data) => {
-  //   dispatch(saveFetchedJobsAction(data));
-  // },
-  getJobs: (baseEndpoint, query) => {
-    dispatch(getJobsAction(baseEndpoint, query));
-  },
-});
-
-const Searchbar = ({ getJobs }) => {
+const Searchbar = () => {
   const baseEndpoint = "https://strive-jobs-api.herokuapp.com/jobs?search=";
 
   const [query, setQuery] = useState("");
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +22,7 @@ const Searchbar = ({ getJobs }) => {
     // saveFetchedJobs(data);
     // console.log(data);
 
-    getJobs(baseEndpoint, query);
+    dispatch(getJobsAction(baseEndpoint, query));
   };
 
   return (
@@ -54,4 +45,4 @@ const Searchbar = ({ getJobs }) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Searchbar);
+export default Searchbar;

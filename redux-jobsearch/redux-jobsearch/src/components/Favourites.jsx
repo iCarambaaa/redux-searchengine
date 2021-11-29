@@ -11,13 +11,13 @@ const Favourites = () => {
     <Container>
       <Row>
         <Col xs={12}>
-          <ListGroup>
+          <ListGroup className="mt-5">
             {favourites.map((f) => (
               <ListGroupItem>
                 <StarFill
-                  onClick={() => dispatch(removeFromFavouritesAction)}
+                  onClick={() => dispatch(removeFromFavouritesAction(f))}
                 />
-                <span>{f}</span>
+                <span> {f}</span>
               </ListGroupItem>
             ))}
           </ListGroup>
