@@ -53,12 +53,12 @@ export const getJobsAction = (baseEndpoint, query) => {
 }
 
 
-export const addToFavouritesAction = (data) => ({
+export const addToFavouritesAction = (companyName) => ({
     type: ADD_TO_FAVOIRITES,
-    payload: data
+    payload: companyName
 })
 
-export const removeFromFavouritesAction = (data) => ({
+export const removeFromFavouritesAction = (companyName) => ({
     type: REMOVE_FROM_FAVOURITES,
-    payload: data
+    payload: companyName
 })

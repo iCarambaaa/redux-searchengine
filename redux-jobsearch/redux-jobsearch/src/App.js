@@ -16,6 +16,9 @@ function App() {
             <Link to="/">
               <h1 className="App-link">Human Resource Mashine</h1>
             </Link>
+            <Link to="/favourites">
+              <h6 style={{color: 'lightgrey'}} className="App-link">&#11088; Favourites &#11088;</h6>
+            </Link>
           </Col>
           {/* <Home /> */}
         </Row>
