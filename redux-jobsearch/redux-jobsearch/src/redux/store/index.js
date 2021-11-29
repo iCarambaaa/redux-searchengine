@@ -5,6 +5,7 @@ import selectedJobReducer from '../reducer/selectedJob'
 import thunk from 'redux-thunk'                                         // redux-thunk is going to be helpful for handling async operations in the redux flow
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import { encryptTransform } from 'redux-persist-transform-encrypt';
 
 // we'll have two situations: the end user may have the redux devTools or not
 // if the devTools are installed in the user's browser, we'll have to use the compose function
@@ -26,6 +27,12 @@ export const initialState = {
 const persistConfig = {                                      // configure persistance here
     key: 'root',
     storage,
+    transforms: [
+        encryptTransform(
+        {
+            secretKey: process.env.REACT_APP_REDUX_LOCAL_STORAGE_KEY
+        }
+        )]
   }
 
 const reducerGrande = combineReducers({                      // combine reducers here
@@ -45,6 +52,6 @@ const configureStore = createStore(                           // need to import 
     aComposeFunctionThatAlwaysWorks(applyMiddleware(thunk))   // composing two middlewares (DEV & thug) thug needs to be wrapped in applyMiddleware()
 )
 
-const persistor = persistStore(store)               // used to create the persisted store - need to import in index.js   <PersistGate loading={null} persistor={persistor}>
+const persistor = persistStore(configureStore)               // used to create the persisted store - need to import in index.js   <PersistGate loading={null} persistor={persistor}>
 
 export {configureStore, persistor}
