@@ -21,29 +21,29 @@ const SingleJobOffer = () => {
 
   return (
     <div className="d-flex flex-column ">
-      <span className="text-center">
+      <p className="text-center">
         {isFav ? (
           <>
-            Remove from favorites
             <StarFill
               color="gold"
               size={24}
               className="me-4 my-auto"
               onClick={toggleFavourite}
             />
+            <p>Remove from favorites</p>
           </>
         ) : (
           <>
-            Add to favorites
             <Star
               color="gold"
               size={24}
               className="me-4 my-auto"
               onClick={toggleFavourite}
             />
+            <p> Add to favorites</p>
           </>
         )}
-      </span>
+      </p>
       <h2>{selectedJob.title}</h2>
       <Markup content={selectedJob.description} />
     </div>
